@@ -7,16 +7,50 @@ body, html {
 	text-align:center;
 }
 
+.logo {
+	position: relative;
+	top: 0px;
+	right: -906px;
+	width:150px;
+	height: auto;
+	margin-bottom:10px;
+}
+
+.bar {
+	width:50%;
+	border:thin solid #CCC;
+	margin:20px auto 0px auto;
+}
+
 /* MAIN HEADER */
 .container {
 	width:100%;
 }
+
 .header_image, .jumbotron {
     background-image: url("images/header_background.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+}
+
+.header_image_result, .jumbotron_result {
+    width:100%;
+    max-height:100px;
+    overflow:hidden;
+}
+
+.crop {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.crop img {
+    width: 100%;
+    height: 300px;
+    margin: -25px 0 0 0px;
 }
 
 /* Text in Header Image */
@@ -30,8 +64,16 @@ body, html {
 	font-size: 40px;
 	line-height:120%;
 	color: #FFF !important;
-    background-color:green;
+    background-color:#bc0000;
 	display:inline;
+}
+
+#howitworks img {
+	text-align:center;
+}
+
+.border {
+	border:thin solid #F9F9F9;
 }
 
 #diabetes_type_label label {
@@ -48,42 +90,9 @@ body, html {
     /* CSS3 */
 }
 
-.donate-now {
-    list-style-type:none;
-    margin:25px 0 0 0;
-    padding:0;
-}
-.donate-now li {
-    margin:0 5px 0 0;
-}
-.donate-now label {
-    padding:5px;
-    cursor:pointer;
-    -webkit-appearance: button;
-    /* WebKit */
-    -moz-appearance: button;
-    /* Mozilla */
-    -o-appearance: button;
-    /* Opera */
-    -ms-appearance: button;
-    /* Internet Explorer */
-    appearance: button;
-    /* CSS3 */
-}
-.donate-now label:hover {
-    background:#DDD;
-}
-
 .column {
     float: left;
-}
-
-.left, .right {
     width: 25%;
-}
-
-.middle {
-    width: 50%;
 }
 
 /* Clear floats after the columns */
@@ -101,4 +110,9 @@ body, html {
 	display:none;
 }
 
-/* MAIN HEADER */
+/* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
