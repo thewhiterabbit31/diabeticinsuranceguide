@@ -1,0 +1,178 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Insultard</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="conditionalFields.js"></script>
+</head>
+
+<body>
+
+    <div class="collapse bg-inverse" id="navbarHeader">
+      <div class="container">
+        
+      </div>
+    </div>
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">1.2 MILLION AMERICANS DIE BECAUSE THEY CAN’T GET THE RIGHT INSULIN</h1>
+        <p class="lead text-muted"></p>
+        <!--<p>
+          <a href="#" class="btn btn-primary">Type 1</a>
+          <a href="#" class="btn btn-primary">Type 2</a>
+        </p>-->
+      </div>
+    </section>
+
+    
+      
+      <div class="container">
+
+        <!--<p>How It Works</p>
+        <div class="row">
+          <div class="col-sm">One of three columns</div>
+          <div class="col-sm">One of three columns</div>
+          <div class="col-sm">One of three columns</div>
+        </div>-->
+
+        <form id="intake_form">
+          <h2 class="form-signin-heading">Understand Your Options</h2>
+          
+          <fieldset class="form-group" id="diabetes_type">
+            <label for="example-month-input" class="col-2 col-form-label" id="diabetes_type_label" >What diabetes type are you??</label><br>
+            <input type="radio" class="form-check-input" name="diabetesType" id="diabetesType1" value="1">Type 1<br>
+            <input type="radio" class="form-check-input" name="diabetesType" id="diabetesType2" value="2">Type 2
+          </fieldset>
+
+          <div class="form-group">
+            <label for="example-month-input" class="col-2 col-form-label">Please select the insurance provider you are providing information about:</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option style="display:none"></option>
+              <option>BlueCross BlueShield</option>
+              <option>Etna Group</option>
+              <option>Humana Group</option>
+              <option>United Health</option>
+              <option>Medicare</option>
+              <option>Fill in the blank</option>
+            </select>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="example-month-input" class="col-2 col-form-label">Please indicate the plan year you are providing information for:</label>
+            <input class="form-control" type="month" value="2011-08" id="example-month-input">
+          </div>
+          <br>
+
+          <fieldset class="form-group" id="use_insulin">
+            <label for="example-month-input" class="col-2 col-form-label">Do you use insulin?</label><br>
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="yes">Yes<br>
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="no">No
+          </fieldset>
+          
+          <div class="form-group hidden">
+            <label for="example-month-input" class="col-2 col-form-label">Which insulin do you use?</label>
+            <select multiple="" class="form-control" id="which_insulin">
+              <option>Humalog</option>
+              <option>Lantus</option>
+              <option>Levemir</option>
+              <option>Novorapid</option>
+              <option>Actrapid</option>
+              <option>Humulin</option>
+              <option>Hypurin</option>
+              <option>Insuman</option>
+              <option>Insultard</option>
+            </select>
+          </div>
+
+          <br>
+          <div class="form-group">
+            <label for="example-month-input" class="col-2 col-form-label">How do you inject fast acting and slow acting insulin?</label>
+            <select multiple="" class="form-control" id="inject_type">
+              <option value="pen">Pen</option>
+              <option value="vial">Vial</option>
+              <option value="pump">Pump</option>
+            </select>
+          </div>
+
+
+          <div class="form-group hidden">
+            <label for="example-month-input" class="col-2 col-form-label">What size do you need (Length)?</label>
+            <select class="form-control" id="size_length">
+              <option style="display:none"></option>
+              <option>12.7 mm</option>
+              <option>4 mm</option>
+            </select>
+          </div>
+          
+          <div class="form-group hidden">
+            <label for="example-month-input" class="col-2 col-form-label">What size do you need (Gauge)?</label>
+            <select class="form-control" id="size_gauge">
+              <option style="display:none"></option>
+              <option>32G</option>
+              <option>28G</option>
+            </select>
+          </div>
+
+
+          <div class="form-group hidden">
+            <label for="example-month-input" class="col-2 col-form-label">Which provider do you get your pump from?</label>
+            <select class="form-control" id="pump_provider">
+              <option style="display:none"></option>
+              <option>Medtronic</option>
+              <option>Tandem</option>
+              <option>Insulet</option>
+              <option>Animas</option>
+              <option>Roche</option>
+              <option>Sooil</option>
+            </select>
+          </div>
+
+           <div class="form-group hidden">
+            <label for="example-month-input" class="col-2 col-form-label">Which pills do you take?</label>
+            <select multiple="" class="form-control" id="pills">
+              <option>Biguanides</option>
+              <option>Metformin (Glucophage)</option>
+              <option>Metformin liquid (Riomet)</option>
+              <option>Metformin extended release</option>
+            </select>
+          </div>
+
+          <br>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Review My Options</button>
+        </form>
+
+      </div>
+    
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Philly Codefest 2018</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script>
+      $(function () {
+        Holder.addTheme("thumb", { background: "#55595c", foreground: "#eceeef", text: "Thumbnail" });
+      });
+    </script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

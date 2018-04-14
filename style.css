@@ -1,0 +1,104 @@
+/* COMMONLY USED */
+body, html {
+    height: 100%;
+}
+
+.center {
+	text-align:center;
+}
+
+/* MAIN HEADER */
+.container {
+	width:100%;
+}
+.header_image, .jumbotron {
+    background-image: url("images/header_background.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Text in Header Image */
+.header_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.header_text h1, .jumbotron-heading {
+	font-size: 40px;
+	line-height:120%;
+	color: #FFF !important;
+    background-color:green;
+	display:inline;
+}
+
+#diabetes_type_label label {
+    cursor:pointer;
+    -webkit-appearance: button;
+    /* WebKit */
+    -moz-appearance: button;
+    /* Mozilla */
+    -o-appearance: button;
+    /* Opera */
+    -ms-appearance: button;
+    /* Internet Explorer */
+    appearance: button;
+    /* CSS3 */
+}
+
+.donate-now {
+    list-style-type:none;
+    margin:25px 0 0 0;
+    padding:0;
+}
+.donate-now li {
+    margin:0 5px 0 0;
+}
+.donate-now label {
+    padding:5px;
+    cursor:pointer;
+    -webkit-appearance: button;
+    /* WebKit */
+    -moz-appearance: button;
+    /* Mozilla */
+    -o-appearance: button;
+    /* Opera */
+    -ms-appearance: button;
+    /* Internet Explorer */
+    appearance: button;
+    /* CSS3 */
+}
+.donate-now label:hover {
+    background:#DDD;
+}
+
+.column {
+    float: left;
+}
+
+.left, .right {
+    width: 25%;
+}
+
+.middle {
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.btn {
+	font-size: 125% !important;
+}
+
+.hidden {
+	display:none;
+}
+
+/* MAIN HEADER */
