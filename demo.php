@@ -1,4 +1,10 @@
 <html>
+    <select>
+        <option>Insurer 1</option>
+        <option>Insurer 2</option>
+        <option>Insurer 3</option>
+    </select>
+    <button type='button'>Retrieve Provider Information</button>
     <table>
         <tr>
             <?php
