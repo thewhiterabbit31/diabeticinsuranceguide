@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS syringes(
 user_id int(11) REFERENCES users(username),
 syringe_size double NOT NULL,
 syringe_gauge double NOT NULL,
+syringe_volume double NOT NULL,
 date_served date NOT NULL,
 PRIMARY KEY(user_id, date_served)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
