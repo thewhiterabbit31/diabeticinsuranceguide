@@ -9,7 +9,7 @@ body, html {
 
 .topNav {
 	position: relative;
-	top: 0px;
+	top: 5px;
 	height:auto;
 	margin-bottom:10px;
 	padding:0 10%;
@@ -87,6 +87,12 @@ body, html {
 	display:inline;
 }
 
+.subheading {
+	opacity:0.8;
+    background-color:#FFF;
+	display:inline;
+}
+
 #howitworks img {
 	text-align:center;
 }
@@ -111,7 +117,7 @@ body, html {
 
 .column {
     float: left;
-    width: 25%;
+    width: 20%;
 }
 
 /* Clear floats after the columns */
@@ -123,6 +129,8 @@ body, html {
 
 .btn {
 	font-size: 125% !important;
+	border:thin solid #CCC;
+	font-weight:bold;
 }
 
 .hidden {
@@ -134,4 +142,23 @@ body, html {
     .column {
         width: 100%;
     }
+}
+
+figure.item {
+    /* To correctly align image, regardless of content height: */
+    vertical-align: top;
+    margin-left:auto;
+    margin-right:auto;
+    /* To horizontally center images and caption */
+    text-align: center;
+    /* The width of the container also implies margin around the images. */
+    width: 120px;
+}
+.item img {
+    width: 100px;
+    height: 100px;
+}
+.caption {
+    /* Make the caption a block so it occupies its own line. */
+    display: block;
 }

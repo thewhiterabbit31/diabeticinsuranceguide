@@ -63,38 +63,48 @@ $( document ).ready(function() { //wait until body loads
 				value[i] = $(selected).text(); 
 				console.log("value: " + value.length);
 
+
 				if(value.length == 3) {
 					console.log("all");
 					size_length.removeClass('hidden');
               		size_gauge.removeClass('hidden');
               		pump_provider.removeClass('hidden');
-				} else if(value[i].length ==2) {
-					console.log("Length2");
-				} else {
-					if(value[i] == "Pen") {
-						console.log("Pen");
+				} else if(value.length ==2) {
+					console.log("2");
+					if(value[i] == "Pump") {
 						size_length.removeClass('hidden');
 						size_gauge.removeClass('hidden');
-					} else if(value[i] == "Vial") {
-						console.log("vial part of pen");
+						pump_provider.removeClass('hidden');
+					} else {
+						size_length.removeClass('hidden');
+						size_gauge.removeClass('hidden');
+						pump_provider.addClass('hidden');
+					}
+				} else {
+					if(value[i] == "Pens/Tips") {
+						console.log("Pens/Tips");
+						size_length.removeClass('hidden');
+						size_gauge.removeClass('hidden');
+					} else if(value[i] == "Vials/Syringes") {
+						console.log("Vials/Syringes part of pen");
 						size_length.removeClass('hidden');
 						size_gauge.removeClass('hidden');
 					} else {
-						console.log("Hide Pen and Vial");
+						console.log("Hide Pens/Tips and Vials/Syringes");
 						size_length.addClass('hidden');
 						size_gauge.addClass('hidden');
 					}
 
-					if(value[i] == "Vial") {
-						console.log("Vial");
+					if(value[i] == "Vials/Syringes") {
+						console.log("Vials/Syringes");
 						size_length.removeClass('hidden');
 						size_gauge.removeClass('hidden');
-					} else if(value[i] == "Pen") {
-						console.log("pen part of vial");
+					} else if(value[i] == "Pens/Tips") {
+						console.log("Pens/Tips part of Vials/Syringes");
 						size_length.removeClass('hidden');
 						size_gauge.removeClass('hidden');
 					} else {
-						console.log("Hide Pen and Vial");
+						console.log("Hide Pens/Tips and Vials/Syringes");
 						size_length.addClass('hidden');
 						size_gauge.addClass('hidden');
 					}
