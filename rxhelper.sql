@@ -80,6 +80,27 @@ INSERT INTO insulin_plans
 INSERT INTO insulin_plans
   VALUES('BlueCross BlueShield', 'Silver', 'Detemir', 'Lispro (Humalog)', 'Pens/Tips', '2018-01-01');
 
+INSERT INTO insulin_plans
+  VALUES('BlueCross BlueShield', 'Gold', 'Detemir', 'Lispro (Humalog)', 'Pump', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('BlueCross BlueShield', 'Bronze', 'Detemir', 'Aspart (Novolog)', 'Vials/Syringes', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('BlueCross BlueShield', 'Silver', 'Detemir', 'Aspart (Novolog)', 'Pens/Tips', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('BlueCross BlueShield', 'Gold', 'Detemir', 'Aspart (Novolog)', 'Pump', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('BlueCross BlueShield', 'Bronze', 'Detemir', 'Glulisine (Apidra)', 'Vials/Syringes', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('BlueCross BlueShield', 'Silver', 'Detemir', 'Glulisine (Apidra)', 'Pens/Tips', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('BlueCross BlueShield', 'Gold', 'Detemir', 'Glulisine (Apidra)', 'Pump', '2018-01-01');
+
 INSERT INTO pill_plans
   VALUES('BlueCross BlueShield', 'Bronze', 'Biguanides', '2018-01-01');
 
@@ -87,7 +108,15 @@ INSERT INTO pill_plans
   VALUES('BlueCross BlueShield', 'Bronze', 'Metformin (Glucophage)', '2018-01-01');
 
 INSERT INTO pill_plans VALUES ('Etna Group', 'Bronze', 'Biguanides', '2018-01-01');
-
+INSERT INTO pill_plans VALUES('United Health', 'Silver', 'Biguanides', '2018-01-01');
+INSERT INTO pill_plans VALUES('United Health', 'Silver', 'Metformin (Glucophage)', '2018-01-01');
+INSERT INTO pill_plans VALUES('United Health', 'Gold', 'Metformin liquid (Riomet)', '2018-01-01');
+INSERT INTO pill_plans VALUES('United Health', 'Gold', 'Metformin extended release (Glucophage XR, Fortamet, Giumetza)', '2018-01-01');
+INSERT INTO pill_plans VALUES('United Health', 'Platinum', 'Sulfonylureas', '2018-01-01');
+INSERT INTO pill_plans VALUES('Etna Group', 'Silver', 'Metformin (Glucophage)', '2018-01-01');
+INSERT INTO pill_plans VALUES('Etna Group', 'Silver', 'Metformin liquid (Riomet)', '2018-01-01');
+INSERT INTO pill_plans VALUES('Etna Group', 'Gold', 'Metformin extended release (Glucophage XR, Fortamet, Giumetza)', '2018-01-01');
+INSERT INTO pill_plans VALUES('Etna Group', 'Gold', 'Sulfonylureas', '2018-01-01');
 INSERT INTO users
   VALUES ('admin@admin', 'admin', 2, 'Glargine', 'Lispro (Humalog)', 'Pump', NULL , 1);
 

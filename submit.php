@@ -1,5 +1,6 @@
 <?php
 require 'db.php';
+//require 'mailer.php';
 $insuranceProvider = isset($_POST['insuranceProvider']) ? $_POST['insuranceProvider'] : null ;
 $dateServed = isset($_POST['dateServed']) ? $_POST['dateServed'] : null ;
 $diabetesType = isset($_POST['diabetesType']) ? $_POST['diabetesType'] : null ;
@@ -12,11 +13,12 @@ $volume = isset($_POST['volume']) ? $_POST['volume'] : null ;
 $pumpProvider = isset($_POST['pumpProvider']) ? $_POST['pumpProvider'] : null ;
 $pills = isset($_POST['pills']) ? $_POST['pills'] : null ;
 
-$hasUseInsulin = $_POST['optionsUseInsulinRadios'] ? true : false;
+$hasUseInsulin = $_POST['optionsUseInsulinRadios'];
+
 $notification = $_POST['optionsNotificationsRadios'] ? 1 : 0;
 $email = isset($_POST['email']) ? $_POST['email'] : null ;
 
-$createAccount = $_POST['optionsPasswordRadios'] ? true : false;
+$createAccount = $_POST['optionsPasswordRadios'];
 $pw = isset($_POST['pw']) ? $_POST['pw'] : null ;
 ?>
 
@@ -41,8 +43,27 @@ echo $email.'<br>';
 echo $pw.'<br>';
 echo $notification.'<br>';
 echo $createAccount.'<br>';
+
 */
 
+/*
+echo "type = ".gettype($hasUseInsulin);
+echo "<br>";
+echo $hasUseInsulin;
+if(($diabetesType=="1")){
+    echo "<br>yes, type 1";
+}
+if(($diabetesType=="2")){
+    echo "yes, type 2<br>";
+}
+if(($hasUseInsulin=="true")){
+    echo "yes, use insulin<br>";
+}
+if(($hasUseInsulin=="false")){
+    echo "no, do not use insulin<br>";
+}
+
+*/
 
 $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "' 
             and fast_act_insulin = '" .$fastInsulin. "' 
@@ -103,12 +124,14 @@ $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "'
     <section>
     <div class="container">
     <div class="row">
-        <h2 class="text-center">Results For:<br> [Email]</h2>
+        <h2 class="text-center">Results For:<br> <?php echo $email;?></h2>
         <hr/>
     </div>
 
     <?php
-    if(($diabetesType == 1) || (($diabetesType == 2) && $hasUseInsulin)) {
+
+
+    if(($diabetesType == "1") || (($diabetesType == "2") && ($hasUseInsulin == "true") ) ) {
         //echo "Type1";
 
         $providerSQL = "SELECT provider FROM insulin_plans " . $whereInsulinSQL;
@@ -155,9 +178,10 @@ $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "'
         }
     }
 
-    if($diabetesType == 2 && !$hasUseInsulin) {
+    else{
+        //type 2, no using insulin
 
-        echo "Type2";
+        //echo "Type2";
         //if patient hasn't use insulin
         if (!$hasUseInsulin) {
 
@@ -233,6 +257,7 @@ $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "'
     </footer>
 
     <?php
+        //mailer($email);
         mysqli_close($con);
     ?>
 

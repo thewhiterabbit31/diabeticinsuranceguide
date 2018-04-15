@@ -12,7 +12,7 @@ if (!$con) {
     exit("Could not connect:" . mysqli_error($con));
 }
 
-mysqli_select_db($con,DATABASE) or die("Could not select database :".mysqli_error($con));
+mysqli_select_db($con,  DATABASE) or die("Could not select database :".mysqli_error($con));
 mysqli_query($con,"SET NAMES utf8") or die("Could not encode :".mysqli_error($con));//set encode
 
 
