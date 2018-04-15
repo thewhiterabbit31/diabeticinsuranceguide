@@ -110,17 +110,20 @@
           </fieldset>
           
           <div class="form-group hidden">
-            <label for="example-month-input" class="col-2 col-form-label">Which insulin do you use?</label>
-            <select multiple="" class="form-control" id="which_insulin" size="9" name="insulinName">
-              <option>Humalog</option>
-              <option>Lantus</option>
-              <option>Levemir</option>
-              <option>Novorapid</option>
-              <option>Actrapid</option>
-              <option>Humulin</option>
-              <option>Hypurin</option>
-              <option>Insuman</option>
-              <option>Insultard</option>
+            <label for="example-month-input" class="col-2 col-form-label">Which fast-acting insulin do you use?</label>
+            <select multiple="" class="form-control" id="which_fast_insulin" size="3" name="insulinName">
+              <option>Lispro (Humalog)</option>
+              <option>Aspart (Novolog)</option>
+              <option>Glulisine (Apidra)</option>
+            </select>
+          </div>
+
+          <div class="form-group hidden">
+            <label for="example-month-input" class="col-2 col-form-label">Which slow-acting insulin do you use?</label>
+            <select multiple="" class="form-control" id="which_slow_insulin" size="3" name="insulinName">
+              <option>detemir</option>
+              <option>glargine</option>
+              <option>degludec</option>
             </select>
           </div>
 
@@ -209,6 +212,13 @@
           <div class="form-group hidden">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="passwordField" placeholder="Password" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+          </div>
+
+          <div class="form-group hidden">
+            <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
+            <div class="col-10">
+              <input class="form-control" type="tel" value="1-(555)-555-5555" id="phoneNumber">
+            </div>
           </div>
 
           <br>
