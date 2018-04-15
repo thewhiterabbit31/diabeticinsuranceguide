@@ -49,7 +49,7 @@ if($diabetesType == 2){
 /*
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-*/
+
 function mailer($res){
 
     //Load Composer's autoloader

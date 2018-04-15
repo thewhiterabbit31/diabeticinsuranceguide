@@ -125,12 +125,12 @@ $( document ).ready(function() { //wait until body loads
 
 		optionsPasswordRadios.change(function(){
 			var value=this.value;
-			if(value =='yes') {
+			if(value=="true") {
 				passwordField.removeClass('hidden');
 				passwordField.prop('required',true);
 				phoneNumber.removeClass('hidden');
 			} 
-			if (value =='no') {
+			if(value=="false"){
 				passwordField.addClass('hidden');
 				phoneNumber.removeClass('hidden');
 			}
