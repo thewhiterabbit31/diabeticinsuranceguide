@@ -29,6 +29,9 @@ CREATE TABLE IF NOT EXISTS users(
 email varchar(50) PRIMARY KEY,
 birthday date,
 diabetesType tinyint(1) NOT NULL,
+slow_act_insulin varchar(30),
+fast_act_insulin varchar(30),
+
 subscribe tinyint(1) NOT NULL,
 phoneNum int
 
@@ -60,16 +63,19 @@ PRIMARY KEY(user_id, date_served)
 
 CREATE TABLE IF NOT EXISTS pills(
 user_id int(11) REFERENCES users(email),
-pill_name double NOT NULL,
+pill_name VARCHAR(30) NOT NULL,
 date_served date NOT NULL,
 PRIMARY KEY(user_id, date_served)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO plans(provider, tier, slow_act_insulin, fast_act_insulin, insulin_type, date_served)
-  VALUES('BlueCross BlueShield', 'Bronze', 'Detemir', 'Lispro (Humalog)', 'Vials/Syringes', '01-01-2018');
+INSERT INTO type1_plans(provider, tier, slow_act_insulin, fast_act_insulin, insulin_type, update_date)
+  VALUES('BlueCross BlueShield', 'Bronze', 'Detemir', 'Lispro (Humalog)', 'Vials/Syringes', '2018-01-01');
 
-INSERT INTO plans(provider, tier, slow_act_insulin, fast_act_insulin, insulin_type, date_served)
-  VALUES('BlueCross BlueShield', 'Silver', 'Detemir', 'Lispro (Humalog)', 'Pens/Tips', '01-01-2018');
+INSERT INTO type1_plans(provider, tier, slow_act_insulin, fast_act_insulin, insulin_type, update_date)
+  VALUES('BlueCross BlueShield', 'Silver', 'Detemir', 'Lispro (Humalog)', 'Pens/Tips', '2018-01-01');
+
+INSERT INTO type2_plans(provider, tier, pill, update_date)
+  VALUES('BlueCross BlueShield', 'Bronze', 'Biguanides', '2018-01-01');
 
 INSERT INTO 'users' (username, email, birthday, type1, type2) VALUES ('admin', NULL, NULL, '1', '0');
