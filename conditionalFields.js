@@ -38,23 +38,23 @@ $( document ).ready(function() { //wait until body loads
 		
 		optionsUseInsulinRadios.change(function(){
 			var value=this.value;
-			if(value =='yes') {
+			if(value =='true') {
 				which_fast_insulin.parent().removeClass('hidden');
 				which_slow_insulin.parent().removeClass('hidden');
 				which_fast_insulin.prop('required',true);
 				which_slow_insulin.prop('required',true);
-				pills.addClass('hidden');
-				pills.prop('required',false);
+				//pills.addClass('hidden');
+				//pills.prop('required',false);
 				inject_type.parent().removeClass('hidden');
 			} 
-			if (value =='no') {
+			if (value =='false') {
 				which_fast_insulin.parent().addClass('hidden');
 				which_slow_insulin.parent().addClass('hidden');
 				which_fast_insulin.prop('required',false);
 				which_slow_insulin.prop('required',false);
 				inject_type.parent().addClass('hidden');
-				pills.removeClass('hidden');
-				pills.prop('required',true);
+				//pills.removeClass('hidden');
+				//pills.prop('required',true);
 			}
 		});
 
