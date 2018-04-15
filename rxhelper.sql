@@ -61,13 +61,6 @@ date_served date NOT NULL,
 PRIMARY KEY(user_id, date_served)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS pills(
-user_id int(11) REFERENCES users(email),
-pill_name VARCHAR(30) NOT NULL,
-date_served date NOT NULL,
-PRIMARY KEY(user_id, date_served)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 INSERT INTO type1_plans(provider, tier, slow_act_insulin, fast_act_insulin, insulin_type, update_date)
   VALUES('BlueCross BlueShield', 'Bronze', 'Detemir', 'Lispro (Humalog)', 'Vials/Syringes', '2018-01-01');
