@@ -159,7 +159,7 @@ figure.item {
 }
 .item img {
     width: 100px;
-    height: 100px;
+    height: auto;
 }
 .caption {
     /* Make the caption a block so it occupies its own line. */
