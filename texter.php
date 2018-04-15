@@ -24,6 +24,6 @@ $client->messages->create(
 
         // Loop through changes and print them out. Then say whether or not the
         // want to log in by providing a link to official website.
-        'body' => 'Hi, the following information was updated' .
+        'body' => 'Hi, the following information was updated'
     )
 );
