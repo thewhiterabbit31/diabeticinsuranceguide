@@ -22,7 +22,7 @@ $pw = isset($_POST['pw']) ? $_POST['pw'] : null ;
 //search the plan that match
 
 
-
+/*
 echo $insuranceProvider.'<br>';
 echo $diabetesType.'<br>';
 echo $dateServed.'<br>';
@@ -40,7 +40,7 @@ echo $email.'<br>';
 echo $pw.'<br>';
 echo $notification.'<br>';
 echo $createAccount.'<br>';
-
+*/
 
 
 $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "' 
@@ -50,7 +50,7 @@ $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "'
 //echo $whereInsulinSQL;
 
 
-if($diabetesType == 1){
+if(($diabetesType == 1) || (($diabetesType == 2) && $hasUseInsulin)){
     echo "Type1";
 
     $providerSQL = "SELECT provider FROM insulin_plans ".$whereInsulinSQL;
@@ -61,6 +61,7 @@ if($diabetesType == 1){
     $sql = "SELECT provider, tier FROM insulin_plans ".$whereInsulinSQL;
 
     echo "<br>sql:  ".$sql;
+    echo "<br>";
     $res = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_array($res)){
         echo '<br> provider = '. $row['provider'] . '<br>';
@@ -89,13 +90,13 @@ if($diabetesType == 1){
         }
 
     }
-    sendEmail($res,$email);
+    //sendEmail($res,$email);
 
 
 }
 
 
-if($diabetesType == 2){
+if($diabetesType == 2 && !$hasUseInsulin){
 
     echo "Type2";
     //if patient hasn't use insulin
@@ -135,7 +136,7 @@ if($diabetesType == 2){
             mysqli_query($con, $insert2UserPlanSQL );
         }
     }
-    sendEmail($res,$email);
+    //sendEmail($res,$email);
 
 
 }
