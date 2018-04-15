@@ -43,4 +43,4 @@ try {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }
 
-mysql_close($conn);
+mysqli_close($conn);

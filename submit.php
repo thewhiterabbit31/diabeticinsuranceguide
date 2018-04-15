@@ -3,7 +3,7 @@ require 'db.php';
 $insuranceProvider = isset($_POST['insuranceProvider']) ? $_POST['insuranceProvider'] : null ;
 $dateServed = isset($_POST['dateServed']) ? $_POST['dateServed'] : null ;
 $insulinName = isset($_POST['insulinName']) ? $_POST['insulinName'] : null ;
-$injectType = isset($_POST['insulinType']) ? $_POST['insulinType'] : null ;
+$insulinType = isset($_POST['insulinType']) ? $_POST['insulinType'] : null ;
 $size = isset($_POST['size']) ? $_POST['size'] : null ;
 $gauge = isset($_POST['gauge']) ? $_POST['gauge'] : null ;
 $volume = isset($_POST['volume']) ? $_POST['volume'] : null ;
@@ -32,7 +32,7 @@ if($diabetesType == 2){
 
 if($diabetesType == 1){
     $sql1 = "SSELECT plan_id, provider, tier FROM 'type1_plans' 
-        WHERE (slow_act_insulin = '" .$slowInsulin. "' and fast_act_insulin = '" .$fastInsulin. "' and insulin_type = '" . $injectType . "');";
+        WHERE (slow_act_insulin = '" .$slowInsulin. "' and fast_act_insulin = '" .$fastInsulin. "' and insulin_type = '" . $insulinType . "');";
     $res = mysqli_query($con, $sql1);
     while ($row = mysqli_fetch_array($res)){
         mysqli_query($con, 'INSERT INTO user_plans VALUES(' . $email. ',' . $row['plan_id'] .')' );
