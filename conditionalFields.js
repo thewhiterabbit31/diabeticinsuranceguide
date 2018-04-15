@@ -23,12 +23,14 @@ $( document ).ready(function() { //wait until body loads
 			var value=this.value;
 			if(value =='2') {
 				pills.removeClass('hidden');
+				pills.prop('required',true);
 				use_insulin.removeClass('hidden');
 				use_insulin.find('input').prop('required',true);
 			} 
 			
 			if (value =='1') {
 				pills.addClass('hidden');
+				pills.prop('required',false);
 				use_insulin.addClass('hidden');
 			}
 		});
@@ -40,6 +42,8 @@ $( document ).ready(function() { //wait until body loads
 				which_slow_insulin.parent().removeClass('hidden');
 				which_fast_insulin.prop('required',true);
 				which_slow_insulin.prop('required',true);
+				pills.addClass('hidden');
+				pills.prop('required',false);
 				inject_type.parent().removeClass('hidden');
 			} 
 			if (value =='no') {
@@ -49,6 +53,7 @@ $( document ).ready(function() { //wait until body loads
 				which_slow_insulin.prop('required',false);
 				inject_type.parent().addClass('hidden');
 				pills.removeClass('hidden');
+				pills.prop('required',true);
 			}
 		});
 
