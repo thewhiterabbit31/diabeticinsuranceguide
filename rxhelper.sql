@@ -30,14 +30,13 @@ PRIMARY KEY (provider, tier, pill)
 
 CREATE TABLE IF NOT EXISTS users(
 email varchar(50) PRIMARY KEY,
-password varchar(50),
+pw varchar(50) NOT NULL,
 diabetesType tinyint(1) NOT NULL,
 slow_act_insulin varchar(30),
 fast_act_insulin varchar(30),
+insulin_type VARCHAR(30),
 pill varchar(30),
-subscribe tinyint(1) NOT NULL,
-phoneNum int
-
+subscribe tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS pens(
@@ -90,7 +89,7 @@ INSERT INTO pill_plans
 INSERT INTO pill_plans VALUES ('Etna Group', 'Bronze', 'Biguanides', '2018-01-01');
 
 INSERT INTO users
-  VALUES ('admin@admin', 2, 'Glargine', 'Lispro (Humalog)', 'Pump' , 1);
+  VALUES ('admin@admin', 'admin', 2, 'Glargine', 'Lispro (Humalog)', 'Pump', NULL , 1);
 
 
 INSERT INTO all_plans

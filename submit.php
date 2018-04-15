@@ -2,7 +2,9 @@
 require 'db.php';
 $insuranceProvider = isset($_POST['insuranceProvider']) ? $_POST['insuranceProvider'] : null ;
 $dateServed = isset($_POST['dateServed']) ? $_POST['dateServed'] : null ;
-$insulinName = isset($_POST['insulinName']) ? $_POST['insulinName'] : null ;
+$diabetesType = isset($_POST['diabetesType']) ? $_POST['diabetesType'] : null ;
+$fastInsulin = isset($_POST['fastInsulin']) ? $_POST['fastInsulin'] : null ;
+$slowInsulin = isset($_POST['slowInsulin']) ? $_POST['slowInsulin'] : null;
 $insulinType = isset($_POST['insulinType']) ? $_POST['insulinType'] : null ;
 $size = isset($_POST['size']) ? $_POST['size'] : null ;
 $gauge = isset($_POST['gauge']) ? $_POST['gauge'] : null ;
@@ -10,150 +12,157 @@ $volume = isset($_POST['volume']) ? $_POST['volume'] : null ;
 $pumpProvider = isset($_POST['pumpProvider']) ? $_POST['pumpProvider'] : null ;
 $pills = isset($_POST['pills']) ? $_POST['pills'] : null ;
 
-$fastInsulin = isset($_POST['fastInsulin']) ? $_POST['fastInsulin'] : null ;
-$slowInsulin = isset($_POST['slowInsulin']) ? $_POST['slowInsulin'] : null;
-
-$diabetesType = isset($_POST['diabetesType']) ? $_POST['diabetesType'] : null ;
-$notification =isset($_POST['optionsNotificationsRadios']) ? $_POST['optionsNotificationsRadios'] : null ;
+$hasUseInsulin = $_POST['optionsUseInsulinRadios'] ? true : false;
+$notification = $_POST['optionsNotificationsRadios'] ? 1 : 0;
 $email = isset($_POST['email']) ? $_POST['email'] : null ;
 
-$createAccount = isset($_POST['optionsPasswordRadios']) ? $_POST['optionsPasswordRadios'] : null;
+$createAccount = $_POST['optionsPasswordRadios'] ? true : false;
 $pw = isset($_POST['pw']) ? $_POST['pw'] : null ;
 
 //search the plan that match
+
+
+
+echo $insuranceProvider.'<br>';
+echo $diabetesType.'<br>';
+echo $dateServed.'<br>';
+echo $insulinType.'<br>';
+
+echo $slowInsulin.'<br>';
+echo $fastInsulin.'<br>';
+
+echo $size.'<br>';
+echo $gauge.'<br>';
+echo $volume.'<br>';
+echo $pumpProvider.'<br>';
+echo $pills.'<br>';
+echo $email.'<br>';
+echo $pw.'<br>';
+echo $notification.'<br>';
+echo $createAccount.'<br>';
+
+
 
 $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "' 
             and fast_act_insulin = '" .$fastInsulin. "' 
             and insulin_type = '" . $insulinType . "');";
 
+//echo $whereInsulinSQL;
 
 
 if($diabetesType == 1){
+    echo "Type1";
 
-    $providerSQL = "SELECT provider FROM 'insulin_plans' ".$whereInsulinSQL;
+    $providerSQL = "SELECT provider FROM insulin_plans ".$whereInsulinSQL;
 
-    $tierSQL = "SELECT tier FROM 'insulin_plans' ".$whereInsulinSQL;
+    $tierSQL = "SELECT tier FROM insulin_plans ".$whereInsulinSQL;
 
     //select best match provider and tier
-    $sql = "SELECT provider, tier FROM 'insulin_plans' ".$whereInsulinSQL;
+    $sql = "SELECT provider, tier FROM insulin_plans ".$whereInsulinSQL;
 
+    echo "<br>sql:  ".$sql;
     $res = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_array($res)){
-        echo 'provider = '. $row['provider'] . '<br>';
+        echo '<br> provider = '. $row['provider'] . '<br>';
         echo 'tier = '. $row['tier'] . '<br>';
-        echo '';
+        echo '<br>';
 
         //if user choose to create an account
         if($createAccount){
 
-            echo "Your data have log into our database! Thank you!";
+            //email, pw, diabetesType, slow_act_insulin, fast_act_insulin, insulin_type, pill, subscribe
+            try {
+                $insert2usersSQL = "INSERT INTO users VALUES('" . $email . "', '" . $pw . "', " . $diabetesType . ", '" . $slowInsulin . "', '" . $fastInsulin . "', '" . $insulinType . "', NULL," . $notification . ")";
+                mysqli_query($con, $insert2usersSQL);
+            }catch (Exception $e) {
+                echo "insert unsuccessful";
+            }
+            //echo $insert2usersSQL.'<br>';
 
-            $planIdSQL = "SELECT plan_id FROM 'all_plans' WHERE(provider = (". $row['provider'] .") and tier = (". $row['tier'] .") )";
-            $planId = mysqli_query($con, $planIdSQL);
+            //get the best match plan id
+            $planIdSQL = "SELECT plan_id FROM all_plans WHERE(provider = '". $row['provider'] ."' and tier = '". $row['tier'] ."' )";
+            $planIdRes = mysqli_query($con, $planIdSQL);
+            $planId = mysqli_fetch_array($planIdRes);
 
-            mysqli_query($con, 'INSERT INTO user_plans VALUES(' . $email. ',' . $planId .')' );
+            $insert2UserPlanSQL = "INSERT INTO user_plans VALUES('" . $email. "', " . $planId['plan_id'] . ", '" . $dateServed ."-01')";
+            mysqli_query($con, $insert2UserPlanSQL );
         }
 
     }
-    //mailer($res);
+    sendEmail($res,$email);
+
 
 }
 
-/*
+
 if($diabetesType == 2){
-    $sql1 = "SELECT plan_id, provider, tier FROM type1_plans WHERE pill = '".$pills ."'";
-    $res = mysqli_query($con, $sql1);
+
+    echo "Type2";
+    //if patient hasn't use insulin
+    if(!$hasUseInsulin){
+
+        $providerSQL = "SELECT provider FROM pill_plans WHERE pill = '" . $pills . "'";
+        $tierSQL = "SELECT tier FROM pill_plans WHERE pill = '" . $pills . "'";
+
+    }
+    $sql = "SELECT provider, tier FROM pill_plans WHERE pill = '" . $pills . "'";
+    $res = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_array($res)){
-        mysqli_query($con, "INSERT INTO user_plans VALUES('" . $email. "'," . $row['plan_id'] .")" );
 
-        echo 'provider = '. $row['provider'] . '<br>';
+        echo '<br> provider = '. $row['provider'] . '<br>';
         echo 'tier = '. $row['tier'] . '<br>';
-    }
-    mailer($res);
-}
-*/
+        echo '<br>';
 
+        //if user choose to create an account
+        if($createAccount){
 
-
-// Import PHPMailer classes into the global namespace
-// These must be at the top of your script, not inside a function
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-function mailer($res){
-
-    //Load Composer's autoloader
-        require 'vendor/autoload.php';
-
-        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-        try {
-            //Server settings
-            $mail->SMTPDebug = 2;                                 // Enable verbose debug output
-            $mail->isSMTP();                                      // Set mailer to use SMTP
-            $mail->Host = 'smtp.sendgrid.net';                    // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = 'Philly-Codefest-Test';             // SMTP username
-            $mail->Password = '';                 // SMTP password
-            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-            $mail->Port = 587;                                    // TCP port to connect to
-
-            //Recipients
-            $mail->setFrom('diabeticInsurance@email.com', 'DI Email');
-            $mail->addAddress($_SESSION['email'], $_SESSION['name']);     // Add a recipient
-
-            $emailBody = "Hello, we are reaching out to you
-                today inform you of the following changes listed below:<br>
-                <table>
-                    <thead>
-                        <th>provider</th>
-                        <th>tier</th>
-                    </thead>
-                
-                ";
-            while ($row = mysqli_fetch_array($res)){
-                $emailBody = $emailBody."
-                <tr>
-                    <td>". $row['provider'] ."</td>
-                    <td>". $row['tier'] ."</td>
-                </tr>
-                ";
+            //email, pw, diabetesType, slow_act_insulin, fast_act_insulin, insulin_type, pill, subscribe
+            try {
+                $insert2usersSQL = "INSERT INTO users VALUES('" . $email . "', '" . $pw . "', " . $diabetesType . ", ', NULL, NULL, NULL, '" . $pills. "', " . $notification . ")";
+                mysqli_query($con, $insert2usersSQL);
+            }catch (Exception $e) {
+                echo "insert unsuccessful";
             }
+            //echo $insert2usersSQL.'<br>';
 
-            $emailBody = $emailBody."</table>";
+            //get the best match plan id
+            $planIdSQL = "SELECT plan_id FROM all_plans WHERE(provider = '". $row['provider'] ."' and tier = '". $row['tier'] ."' )";
+            $planIdRes = mysqli_query($con, $planIdSQL);
+            $planId = mysqli_fetch_array($planIdRes);
 
-            //Content
-            $mail->isHTML(true);                                  // Set email format to HTML
-            $mail->Subject = 'Here is the subject';
-            $mail->Body    = $emailBody;
-
-                // Insert changes here via loo
-                // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-            $mail->send();
-            echo 'Message has been sent';
+            $insert2UserPlanSQL = "INSERT INTO user_plans VALUES('" . $email. "', " . $planId['plan_id'] . ", '" . $dateServed ."-01')";
+            echo $insert2UserPlanSQL;
+            mysqli_query($con, $insert2UserPlanSQL );
+        }
     }
-    catch (Exception $e) {
-        echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-    }
+    sendEmail($res,$email);
+
+
 }
 
 
+//How to send the email???
+function sendEmail($res, $desEmail){
+
+    $msg = "Plans that select for you:\n
+            Insurance Provider / Tier\n";
+
+    while ($row = mysqli_fetch_array($res)){
+        echo $row['provider'], $row['tier'];
+        $msg = $msg.$row['provider']." / ".$row['tier']."\n";
+    }
+
+    echo $msg;
 
 
-/*
-echo $type;
-echo $insuranceProvider;
-echo $dateServed;
-echo $insulinName;
-echo $injectType;
-echo $size;
-echo $gauge;
-echo $volume;
-echo $pumpProvider;
-echo $pills;
-echo $email;
-*/
+
+    // use wordwrap() if lines are longer than 70 characters
+    $msg = wordwrap($msg);
+
+    // send email
+    mail($desEmail,"Code-fest-2018-test",$msg);
+
+}
 
 mysqli_close($con);
 ?>
