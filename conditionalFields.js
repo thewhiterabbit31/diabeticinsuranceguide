@@ -25,13 +25,14 @@ $( document ).ready(function() { //wait until body loads
 				pills.removeClass('hidden');
 				pills.prop('required',true);
 				use_insulin.removeClass('hidden');
-				use_insulin.find('input').prop('required',true);
+				$('#optionsUseInsulinRadios2').click().attr("checked","checked");
 			} 
 			
 			if (value =='1') {
 				pills.addClass('hidden');
 				pills.prop('required',false);
 				use_insulin.addClass('hidden');
+				$('#optionsUseInsulinRadios1').click().attr("checked","checked");
 			}
 		});
 		

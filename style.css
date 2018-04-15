@@ -142,6 +142,9 @@ body, html {
     .column {
         width: 100%;
     }
+    .arrow {
+    	transform : rotate(90deg);
+    }
 }
 
 figure.item {
