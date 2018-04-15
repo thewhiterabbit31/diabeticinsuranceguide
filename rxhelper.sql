@@ -30,6 +30,7 @@ PRIMARY KEY (provider, tier, pill)
 
 CREATE TABLE IF NOT EXISTS users(
 email varchar(50) PRIMARY KEY,
+password varchar(50),
 diabetesType tinyint(1) NOT NULL,
 slow_act_insulin varchar(30),
 fast_act_insulin varchar(30),
