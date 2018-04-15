@@ -101,6 +101,33 @@ INSERT INTO insulin_plans
 INSERT INTO insulin_plans
   VALUES('BlueCross BlueShield', 'Gold', 'Detemir', 'Glulisine (Apidra)', 'Pump', '2018-01-01');
 
+INSERT INTO insulin_plans
+  VALUES('Etna Group', 'Silver', 'Detemir', 'Lispro (Humalog)', 'Vials/Syringes', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('Etna Group', 'Silver', 'Detemir', 'Lispro (Humalog)', 'Pens/Tips', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('Etna Group', 'Platinum', 'Detemir', 'Lispro (Humalog)', 'Pump', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('Etna Group', 'Silver', 'Detemir', 'Aspart (Novolog)', 'Vials/Syringes', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('Etna Group', 'Silver', 'Detemir', 'Aspart (Novolog)', 'Pens/Tips', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('Etna Group', 'Platinum', 'Detemir', 'Aspart (Novolog)', 'Pump', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('Etna Group', 'Silver', 'Detemir', 'Glulisine (Apidra)', 'Vials/Syringes', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('Etna Group', 'Silver', 'Detemir', 'Glulisine (Apidra)', 'Pens/Tips', '2018-01-01');
+
+INSERT INTO insulin_plans
+  VALUES('Etna Group', 'Platinum', 'Detemir', 'Glulisine (Apidra)', 'Pump', '2018-01-01');
+
 INSERT INTO pill_plans
   VALUES('BlueCross BlueShield', 'Bronze', 'Biguanides', '2018-01-01');
 

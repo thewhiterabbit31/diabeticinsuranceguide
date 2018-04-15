@@ -146,6 +146,10 @@ $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "'
         $res = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_array($res)) {
 
+            $planIdSQL = "SELECT plan_id, price FROM all_plans WHERE(provider = '" . $row['provider'] . "' and tier = '" . $row['tier'] . "' )";
+            $planIdRes = mysqli_query($con, $planIdSQL);
+            $planMatch = mysqli_fetch_array($planIdRes);
+
             //if user choose to create an account
             if ($createAccount) {
 
@@ -159,11 +163,9 @@ $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "'
                 //echo $insert2usersSQL.'<br>';
 
                 //get the best match plan id
-                $planIdSQL = "SELECT plan_id FROM all_plans WHERE(provider = '" . $row['provider'] . "' and tier = '" . $row['tier'] . "' )";
-                $planIdRes = mysqli_query($con, $planIdSQL);
-                $planId = mysqli_fetch_array($planIdRes);
 
-                $insert2UserPlanSQL = "INSERT INTO user_plans VALUES('" . $email . "', " . $planId['plan_id'] . ", '" . $dateServed . "-01')";
+
+                $insert2UserPlanSQL = "INSERT INTO user_plans VALUES('" . $email . "', " . $planMatch['plan_id'] . ", '" . $dateServed . "-01')";
                 mysqli_query($con, $insert2UserPlanSQL);
             }
 
@@ -171,10 +173,13 @@ $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "'
             echo '<div class="col-sm-6 col-md-4">';
             echo '<div class="thumbnail results_bottom_border">';
             echo '<h4>' . $row['provider'] . '-' . $row['tier'] . '</h4>';
+            echo '<p>Price: '. $planMatch['price'].'</p>';
             echo '<div class="clearfix"></div>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
+
+
         }
     }
 
@@ -189,9 +194,16 @@ $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "'
             $tierSQL = "SELECT tier FROM pill_plans WHERE pill = '" . $pills . "'";
 
         }
+
+
+
         $sql = "SELECT provider, tier FROM pill_plans WHERE pill = '" . $pills . "'";
         $res = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_array($res)) {
+
+            $planIdSQL = "SELECT plan_id, price FROM all_plans WHERE(provider = '" . $row['provider'] . "' and tier = '" . $row['tier'] . "' )";
+            $planIdRes = mysqli_query($con, $planIdSQL);
+            $planMatch = mysqli_fetch_array($planIdRes);
 
             //if user choose to create an account
             if ($createAccount) {
@@ -205,12 +217,9 @@ $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "'
                 }
                 //echo $insert2usersSQL.'<br>';
 
-                //get the best match plan id
-                $planIdSQL = "SELECT plan_id FROM all_plans WHERE(provider = '" . $row['provider'] . "' and tier = '" . $row['tier'] . "' )";
-                $planIdRes = mysqli_query($con, $planIdSQL);
-                $planId = mysqli_fetch_array($planIdRes);
 
-                $insert2UserPlanSQL = "INSERT INTO user_plans VALUES('" . $email . "', " . $planId['plan_id'] . ", '" . $dateServed . "-01')";
+
+                $insert2UserPlanSQL = "INSERT INTO user_plans VALUES('" . $email . "', " . $planMatch['plan_id'] . ", '" . $dateServed . "-01')";
                 //echo $insert2UserPlanSQL;
                 mysqli_query($con, $insert2UserPlanSQL);
             }
@@ -220,6 +229,7 @@ $whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "'
             echo '<div class="col-sm-6 col-md-4">';
             echo '<div class="thumbnail results_bottom_border">';
             echo '<h4>' . $row['provider'] . '-' . $row['tier'] . '</h4>';
+            echo '<p>Price: '. $planMatch['price'].'</p>';
             echo '<div class="clearfix"></div>';
             echo '</div>';
             echo '</div>';
