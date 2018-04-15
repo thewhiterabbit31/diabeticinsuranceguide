@@ -1,17 +1,34 @@
 <?php
-require './db.php';
-$type = $_POST['diabetesType'];
-$insuranceProvider = $_POST['insuranceProvider'];
-$dateServed = $_POST['dateServed'];
-$insulinName = $_POST['insulinName'];
-$injectType = $_POST['insulinType'];
-$size = $_POST['size'];
-$gauge = $_POST['gauge'];
-$volume = $_POST['volume'];
-$pumpProvider = $_POST['pumpProvider'];
-$pills = $_POST['pills'];
-$email = $_POST['email'];
+require 'db.php';
+$insuranceProvider = isset($_POST['insuranceProvider']) ? $_POST['insuranceProvider'] : null ;
+$dateServed = isset($_POST['dateServed']) ? $_POST['dateServed'] : null ;
+$insulinName = isset($_POST['insulinName']) ? $_POST['insulinName'] : null ;
+$injectType = isset($_POST['insulinType']) ? $_POST['insulinType'] : null ;
+$size = isset($_POST['size']) ? $_POST['size'] : null ;
+$gauge = isset($_POST['gauge']) ? $_POST['gauge'] : null ;
+$volume = isset($_POST['volume']) ? $_POST['volume'] : null ;
+$pumpProvider = isset($_POST['pumpProvider']) ? $_POST['pumpProvider'] : null ;
+$pills = isset($_POST['pills']) ? $_POST['pills'] : null ;
 
-$sql = "insert into list (title,content,author) VALUES ('$title','$content','$username')";
+$type = isset($_POST['diabetesType']) ? $_POST['diabetesType'] : null ;
+$email = isset($_POST['email']) ? $_POST['email'] : null ;
+$pw = isset($_POST['pw']) ? $_POST['pw'] : null ;
+
+
+$sql = "insert into  () VALUES ()";
 $res = mysqli_query($con, $sql);
+
+/*
+echo $type;
+echo $insuranceProvider;
+echo $dateServed;
+echo $insulinName;
+echo $injectType;
+echo $size;
+echo $gauge;
+echo $volume;
+echo $pumpProvider;
+echo $pills;
+echo $email;
+*/
 ?>
