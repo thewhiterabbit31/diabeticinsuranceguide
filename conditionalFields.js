@@ -2,8 +2,10 @@ $( document ).ready(function() { //wait until body loads
 
 		//Inputs that determine what fields to show
 		var inject_type = $('#intake_form #inject_type').parent();
-		var optionsRadios = $('#intake_form input:radio[name=optionsRadios]');
 		var diabetes_type = $('#intake_form input:radio[name=diabetesType]');
+		var optionsRadios = $('#intake_form input:radio[name=optionsRadios]');
+		var optionsNotificationsRadios = $('#intake_form input:radio[name=optionsNotificationsRadios]');
+		var optionsPasswordRadios = $('#intake_form input:radio[name=optionsPasswordRadios]');
 		
 		//Wrappers for all fields
 		var pills = $('#intake_form #pills').parent();
@@ -13,6 +15,7 @@ $( document ).ready(function() { //wait until body loads
 		var size_gauge = $('#intake_form #size_gauge').parent();
 		var size_length  = $('#intake_form #size_length').parent();
 		var size_volume  = $('#intake_form #size_volume').parent();
+		var passwordField = $('#intake_form #passwordField').parent();
 		//var all=bad.add(ok).add(great).add(testimonial_parent).add(thanks_anyway); //shortcut for all wrapper elements
 		
 		optionsRadios.change(function(){
@@ -66,6 +69,16 @@ $( document ).ready(function() { //wait until body loads
 			}
 
 		});	
+
+		optionsPasswordRadios.change(function(){
+			var value=this.value;
+			if(value =='yes') {
+				passwordField.removeClass('hidden');
+			} 
+			if (value =='no') {
+				passwordField.addClass('hidden');
+			}
+		});
 
 		
 });
