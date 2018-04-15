@@ -101,6 +101,10 @@ body, html {
 	border:thin solid #F9F9F9;
 }
 
+.results_bottom_border {
+    border-bottom:8px solid #0e1860 !important;
+}
+
 #diabetes_type_label label {
     cursor:pointer;
     -webkit-appearance: button;
