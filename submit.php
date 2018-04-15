@@ -18,11 +18,11 @@ $email = isset($_POST['email']) ? $_POST['email'] : null ;
 $pw = isset($_POST['pw']) ? $_POST['pw'] : null ;
 
 //search the plan that match
-if($diabetesType == 2){
-    $sql1 = "SELECT plan_id, provider, tier FROM type2_plans WHERE pill = '".$pills ."'";
+if($diabetesType == 1){
+    $sql1 = "SELECT plan_id, provider, tier FROM type1_plans WHERE pill = '".$pills ."'";
     $res = mysqli_query($con, $sql1);
     while ($row = mysqli_fetch_array($res)){
-        mysqli_query($con, 'INSERT INTO user_plans VALUES(' . $email. ',' . $row['plan_id'] .')' );
+        mysqli_query($con, "INSERT INTO user_plans VALUES('" . $email. "'," . $row['plan_id'] .")" );
 
         echo 'provider = '. $row['provider'] . '<br>';
         echo 'tier = '. $row['tier'] . '<br>';
@@ -30,7 +30,7 @@ if($diabetesType == 2){
     mailer($res);
 }
 
-if($diabetesType == 1){
+if($diabetesType == 2){
     $sql1 = "SSELECT plan_id, provider, tier FROM 'type1_plans' 
         WHERE (slow_act_insulin = '" .$slowInsulin. "' and fast_act_insulin = '" .$fastInsulin. "' and insulin_type = '" . $insulinType . "');";
     $res = mysqli_query($con, $sql1);
@@ -46,9 +46,10 @@ if($diabetesType == 1){
 
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
+/*
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
+*/
 function mailer($res){
 
     //Load Composer's autoloader
@@ -105,6 +106,7 @@ function mailer($res){
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
     }
 }
+
 
 
 
