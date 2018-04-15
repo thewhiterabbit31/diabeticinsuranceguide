@@ -1,3 +1,5 @@
+/*DDL*/
+
 CREATE TABLE IF NOT EXISTS all_plans(
 plan_id int(11) AUTO_INCREMENT PRIMARY KEY,
 provider varchar(50) NOT NULL,
@@ -62,6 +64,16 @@ PRIMARY KEY(user_id, date_served)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+
+CREATE TABLE IF NOT EXISTS user_plans(
+user_id int(11) REFERENCES users(email),
+plan_id int(30) REFERENCES all_plans(plan_id),
+date_served date NOT NULL,
+PRIMARY KEY(user_id, plan_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+/*DML*/
 INSERT INTO insulin_plans
   VALUES('BlueCross BlueShield', 'Bronze', 'Detemir', 'Lispro (Humalog)', 'Vials/Syringes', '2018-01-01');
 
@@ -78,5 +90,32 @@ INSERT INTO pill_plans VALUES ('Etna Group', 'Bronze', 'Biguanides', '2018-01-01
 
 INSERT INTO users
   VALUES ('admin@admin', 2, 'Glargine', 'Lispro (Humalog)', 'Pump' , 1);
+
+
+INSERT INTO all_plans
+  VALUES (NULL, 'BlueCross BlueShield', 'Bronze', NULL, NULL);
+
+INSERT INTO all_plans
+  VALUES (NULL, 'BlueCross BlueShield', 'Silver', NULL, NULL);
+
+INSERT INTO all_plans
+  VALUES (NULL, 'BlueCross BlueShield', 'Gold ', NULL, NULL);
+
+INSERT INTO all_plans
+  VALUES (NULL, 'Etna Group', 'Silver', NULL, NULL);
+
+INSERT INTO all_plans
+  VALUES (NULL, 'Etna Group', 'Platinum', NULL, NULL);
+
+INSERT INTO all_plans
+  VALUES (NULL, 'United Health', 'Gold ', NULL, NULL);
+
+INSERT INTO all_plans
+  VALUES (NULL, 'United Health', 'Silver', NULL, NULL);
+
+INSERT INTO all_plans
+  VALUES (NULL, 'United Health', 'Platinum', NULL, NULL);
+
+
 
 

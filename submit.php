@@ -22,20 +22,44 @@ $pw = isset($_POST['pw']) ? $_POST['pw'] : null ;
 
 //search the plan that match
 
-if($diabetesType == 1){
-    $sql1 = "SELECT plan_id FROM 'all plan' 
-        WHERE (slow_act_insulin = '" .$slowInsulin. "' and fast_act_insulin = '" .$fastInsulin. "' and insulin_type = '" . $insulinType . "');";
-    $res = mysqli_query($con, $sql1);
-    while ($row = mysqli_fetch_array($res)){
-        mysqli_query($con, 'INSERT INTO user_plans VALUES(' . $email. ',' . $row['plan_id'] .')' );
+$whereInsulinSQL = "WHERE (slow_act_insulin = '" .$slowInsulin. "' 
+            and fast_act_insulin = '" .$fastInsulin. "' 
+            and insulin_type = '" . $insulinType . "');";
 
+
+
+if($diabetesType == 1){
+
+    $providerSQL = "SELECT provider FROM 'insulin_plans' ".$whereInsulinSQL;
+
+    $tierSQL = "SELECT tier FROM 'insulin_plans' ".$whereInsulinSQL;
+
+    //select best match provider and tier
+    $sql = "SELECT provider, tier FROM 'insulin_plans' ".$whereInsulinSQL;
+
+    $res = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_array($res)){
         echo 'provider = '. $row['provider'] . '<br>';
         echo 'tier = '. $row['tier'] . '<br>';
+        echo '';
+
+        //if user choose to create an account
+        if($createAccount){
+
+            echo "Your data have log into our database! Thank you!";
+
+            $planIdSQL = "SELECT plan_id FROM 'all_plans' WHERE(provider = (". $row['provider'] .") and tier = (". $row['tier'] .") )";
+            $planId = mysqli_query($con, $planIdSQL);
+
+            mysqli_query($con, 'INSERT INTO user_plans VALUES(' . $email. ',' . $planId .')' );
+        }
+
     }
-    mailer($res);
+    //mailer($res);
 
 }
 
+/*
 if($diabetesType == 2){
     $sql1 = "SELECT plan_id, provider, tier FROM type1_plans WHERE pill = '".$pills ."'";
     $res = mysqli_query($con, $sql1);
@@ -47,6 +71,7 @@ if($diabetesType == 2){
     }
     mailer($res);
 }
+*/
 
 
 
