@@ -73,6 +73,6 @@ INSERT INTO type2_plans(provider, tier, pill, update_date)
 
 INSERT INTO type2_plans VALUES (NULL, 'Etna Group', 'Bronze', 'Biguanides', '2018-01-01');
 
-INSERT INTO 'users' (username, email, birthday, type1, type2) VALUES ('admin', NULL, NULL, '1', '0');
+INSERT INTO users(email, diabetesType, slow_insulin, fast_insulin, subscribe) VALUES ('admin@admin', 1, 'Glargine', 'Lispro (Humalog)', 1);
 
 
