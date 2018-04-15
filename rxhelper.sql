@@ -71,4 +71,8 @@ INSERT INTO type1_plans(provider, tier, slow_act_insulin, fast_act_insulin, insu
 INSERT INTO type2_plans(provider, tier, pill, update_date)
   VALUES('BlueCross BlueShield', 'Bronze', 'Biguanides', '2018-01-01');
 
+INSERT INTO type2_plans VALUES (NULL, 'Etna Group', 'Bronze', 'Biguanides', '2018-01-01');
+
 INSERT INTO 'users' (username, email, birthday, type1, type2) VALUES ('admin', NULL, NULL, '1', '0');
+
+

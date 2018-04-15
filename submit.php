@@ -18,7 +18,9 @@ $email = isset($_POST['email']) ? $_POST['email'] : null ;
 $pw = isset($_POST['pw']) ? $_POST['pw'] : null ;
 
 //search the plan that match
-$sql = "select 'plan_id '"
+if($diabetesType == 2){
+    $sql = "SELECT plan_id FROM type2_plans WHERE pill = 'Biguanides' ";
+}
 
 if(!is_null ($pw)){
     //user choose to create an account
