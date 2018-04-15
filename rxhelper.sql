@@ -11,9 +11,9 @@ date_served date NOT NULL
 CREATE TABLE IF NOT EXISTS users(
 email varchar(50) PRIMARY KEY,
 birthday date,
-type1 tinyint(1) NOT NULL,
-type2 tinyint(1) NOT NULL,
-subscribe tinyint(1) NOT NULL
+diabetesType tinyint(1) NOT NULL,
+subscribe tinyint(1) NOT NULL,
+phoneNum int
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
