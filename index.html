@@ -60,7 +60,7 @@
     <section>
       
       <div class="container">
-          <form id="intake_form">
+          <form id="intake_form" action="submit.php" method="post">
 
           <h2 class="form-signin-heading center">Get the Right Insurance for Your Formulary</h2>     
           <fieldset class="form-group" id="diabetes_type">
@@ -74,7 +74,7 @@
 
           <div class="form-group">
             <label for="example-month-input" class="col-2 col-form-label">Please select the insurance provider you are providing information about:</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="exampleFormControlSelect1" name="insuranceProvider">
               <option style="display:none"></option>
               <option>BlueCross BlueShield</option>
               <option>Etna Group</option>
@@ -87,7 +87,7 @@
           <br>
           <div class="form-group">
             <label for="example-month-input" class="col-2 col-form-label">Please indicate the plan year you are providing information for:</label>
-            <input class="form-control" type="month" value="2011-08" id="example-month-input">
+            <input class="form-control" type="month" value="2011-08" id="example-month-input" name="dateServed">
           </div>
           <br>
 
@@ -99,7 +99,7 @@
           
           <div class="form-group hidden">
             <label for="example-month-input" class="col-2 col-form-label">Which insulin do you use?</label>
-            <select multiple="" class="form-control" id="which_insulin" size="9">
+            <select multiple="" class="form-control" id="which_insulin" size="9" name="insulinName">
               <option>Humalog</option>
               <option>Lantus</option>
               <option>Levemir</option>
@@ -115,7 +115,7 @@
           <br>
           <div class="form-group">
             <label for="example-month-input" class="col-2 col-form-label">How do you inject fast acting and slow acting insulin?</label>
-            <select multiple="" class="form-control" id="inject_type" size="3">
+            <select multiple="" class="form-control" id="inject_type" size="3" name="insulinType">
               <option value="pen">Pen</option>
               <option value="vial">Vial</option>
               <option value="pump">Pump</option>
@@ -125,7 +125,7 @@
 
           <div class="form-group hidden">
             <label for="example-month-input" class="col-2 col-form-label">What size do you need (Length)?</label>
-            <select class="form-control" id="size_length">
+            <select class="form-control" id="size_length" name="size">
               <option style="display:none"></option>
               <option>12.7 mm</option>
               <option>4 mm</option>
@@ -134,7 +134,7 @@
           
           <div class="form-group hidden">
             <label for="example-month-input" class="col-2 col-form-label">What size do you need (Gauge)?</label>
-            <select class="form-control" id="size_gauge">
+            <select class="form-control" id="size_gauge" name="gauge">
               <option style="display:none"></option>
               <option>32G</option>
               <option>28G</option>
@@ -143,7 +143,7 @@
 
           <div class="form-group hidden">
             <label for="example-month-input" class="col-2 col-form-label">What volume do you need?</label>
-            <select class="form-control" id="size_volume">
+            <select class="form-control" id="size_volume" name="volume">
               <option style="display:none"></option>
               <option value="0.3">3/10cc</option>
               <option value="0.5">1/2cc</option>
@@ -154,7 +154,7 @@
 
           <div class="form-group hidden">
             <label for="example-month-input" class="col-2 col-form-label">Which provider do you get your pump from?</label>
-            <select class="form-control" id="pump_provider">
+            <select class="form-control" id="pump_provider" name="pumpProvider">
               <option style="display:none"></option>
               <option>Medtronic</option>
               <option>Tandem</option>
@@ -167,7 +167,7 @@
 
            <div class="form-group hidden">
             <label for="example-month-input" class="col-2 col-form-label">Which pills do you take?</label>
-            <select multiple="" class="form-control" id="pills">
+            <select multiple="" class="form-control" id="pills" name="pills">
               <option>None</option>
               <option>Biguanides</option>
               <option>Metformin (Glucophage)</option>
@@ -179,7 +179,7 @@
           <br>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <br>
