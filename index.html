@@ -41,7 +41,8 @@
 
     <section class="jumbotron text-center">
       <div class="container">
-        <h1 class="jumbotron-heading">1.2 MILLION AMERICANS DIE BECAUSE THEY CAN’T GET THE RIGHT INSULIN</h1>
+        <h1 class="jumbotron-heading">MORE THAN 30 MILLION AMERICANS ARE LIVING WITH DIABETES</h1><br>
+        <p class="subheading">Find the best insurance for you to live with diabetes</p>
       </div>
     </section>
 
@@ -75,18 +76,18 @@
           <form id="intake_form" action="submit.php" method="post">
 
           <h2 class="form-signin-heading center">Get the Right Insurance for Your Formulary</h2>     
-          <fieldset class="form-group" id="diabetes_type">
+          <fieldset class="form-group" id="diabetes_type" required="true">
           <label class="btn btn-primary active" id="diabetes_type_label">
-          <input type="radio" class="form-check-input" name="diabetesType" id="diabetesType1" value="1">Type 1 Diabetes
+          <input type="radio" class="form-check-input" name="diabetesType" id="diabetesType1" value="1" required>Type 1 Diabetes
           </label>
           <label class="btn btn-primary">
-            <input type="radio" class="form-check-input" name="diabetesType" id="diabetesType2" value="2">Type 2 Diabetes
+            <input type="radio" class="form-check-input" name="diabetesType" id="diabetesType2" value="2" required>Type 2 Diabetes
           </label>
         </fieldset>
 
           <div class="form-group">
             <label for="example-month-input" class="col-2 col-form-label">Please select the insurance provider you are providing information about:</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="insuranceProvider">
+            <select class="form-control" id="exampleFormControlSelect1" name="insuranceProvider" required="true">
               <option style="display:none"></option>
               <option>BlueCross BlueShield</option>
               <option>Etna Group</option>
@@ -99,14 +100,13 @@
           <br>
           <div class="form-group">
             <label for="example-month-input" class="col-2 col-form-label">Please indicate the plan year you are providing information for:</label>
-            <input class="form-control" type="month" value="2011-08" id="example-month-input" name="dateServed">
+            <input class="form-control" type="month" value="2011-08" id="example-month-input" name="dateServed" required="true">
           </div>
-          <br>
 
-          <fieldset class="form-group" id="use_insulin">
+          <fieldset class="form-group hidden" id="use_insulin">
             <label for="example-month-input" class="col-2 col-form-label">Do you use insulin?</label><br>
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="yes"> Yes<br>
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="no"> No
+            <input type="radio" class="form-check-input" name="optionsUseInsulinRadios" id="optionsRadios1" value="yes"> Yes<br>
+            <input type="radio" class="form-check-input" name="optionsUseInsulinRadios" id="optionsRadios2" value="no"> No
           </fieldset>
           
           <div class="form-group hidden">
@@ -127,7 +127,6 @@
             </select>
           </div>
 
-          <br>
           <div class="form-group">
             <label for="example-month-input" class="col-2 col-form-label">How do you inject fast acting and slow acting insulin?</label>
             <select multiple="" class="form-control" id="inject_type" size="3" name="insulinType">
@@ -182,7 +181,7 @@
 
            <div class="form-group hidden">
             <label for="example-month-input" class="col-2 col-form-label">Which pills do you take?</label>
-            <select multiple="" class="form-control" id="pills" name="pills">
+            <select multiple="" class="form-control" id="pills" size="5" name="pills">
               <option>None</option>
               <option>Biguanides</option>
               <option>Metformin (Glucophage)</option>
@@ -194,7 +193,7 @@
           <br>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" required="true">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
