@@ -1,11 +1,28 @@
-CREATE TABLE IF NOT EXISTS plans(
+CREATE TABLE IF NOT EXISTS type1_plans(
 plan_id int(11) AUTO_INCREMENT PRIMARY KEY,
-provider varchar(50) NOT NULL,
-tier varchar(30) NOT NULL,
+provider varchar(50) NOT NULL REFERENCES all_plans(provider),
+tier varchar(30) NOT NULL REFERENCES all_plans(tier),
 slow_act_insulin varchar(30) NOT NULL,
 fast_act_insulin varchar(30) NOT NULL,
 insulin_type varchar(15) NOT NULL,
-date_served date NOT NULL
+update_date date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS type2_plans(
+plan_id int(11) AUTO_INCREMENT PRIMARY KEY,
+provider varchar(50) NOT NULL REFERENCES all_plans(provider),
+tier varchar(30) NOT NULL REFERENCES all_plans(tier),
+pill VARCHAR(30) NOT NULL,
+update_date date NOT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS all_plans(
+provider varchar(50) NOT NULL,
+tier varchar(30) NOT NULL,
+price double,
+update_date date NOT NULL,
+PRIMARY KEY (provider, tier)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS users(

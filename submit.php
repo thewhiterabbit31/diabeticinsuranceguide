@@ -10,12 +10,22 @@ $volume = isset($_POST['volume']) ? $_POST['volume'] : null ;
 $pumpProvider = isset($_POST['pumpProvider']) ? $_POST['pumpProvider'] : null ;
 $pills = isset($_POST['pills']) ? $_POST['pills'] : null ;
 
-$type = isset($_POST['diabetesType']) ? $_POST['diabetesType'] : null ;
+$fastInsulin = isset($_POST['fastInsulin']) ? $_POST['fastInsulin'] : null ;
+$slowInsulin = isset($_POST['slowInsulin']) ? $_POST['slowInsulin'] : null;
+
+$diabetesType = isset($_POST['diabetesType']) ? $_POST['diabetesType'] : null ;
 $email = isset($_POST['email']) ? $_POST['email'] : null ;
 $pw = isset($_POST['pw']) ? $_POST['pw'] : null ;
 
+//search the plan that match
+$sql = "select 'plan_id '"
 
-$sql = "insert into  () VALUES ()";
+if(!is_null ($pw)){
+    //user choose to create an account
+
+    $sql = "INSERT INTO 'users' (email, diabetesType, )' ";
+}
+
 $res = mysqli_query($con, $sql);
 
 /*
