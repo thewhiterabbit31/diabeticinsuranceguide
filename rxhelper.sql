@@ -49,7 +49,10 @@ PRIMARY KEY(user_id, date_served)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO 'plans'(plan_id, provider, tier, slow_act_insulin, fast_act_insulin, insulin_type) VALUES ('BlueCross BlueShield', 'gold', )
+INSERT INTO plans(provider, tier, slow_act_insulin, fast_act_insulin, insulin_type, date_served)
+  VALUES('BlueCross BlueShield', 'Bronze', 'Detemir', 'Lispro (Humalog)', 'Vials/Syringes', '01-01-2018');
 
+INSERT INTO plans(provider, tier, slow_act_insulin, fast_act_insulin, insulin_type, date_served)
+  VALUES('BlueCross BlueShield', 'Silver', 'Detemir', 'Lispro (Humalog)', 'Pens/Tips', '01-01-2018');
 
 INSERT INTO 'users' (username, email, birthday, type1, type2) VALUES ('admin', NULL, NULL, '1', '0');
